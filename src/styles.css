@@ -1,0 +1,26 @@
+.beast-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.beast-modal-body {
+    height: fit-content;
+    width: fit-content;
+    background: white;
+    padding: 20px;
+    border-radius: 1px;
+    box-shadow: 1px 1px 5px 2px gray;
+}
+
+.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invisible {
+    display: none;
+}

@@ -1,0 +1,36 @@
+{
+  "name": "react-beast-modal",
+  "version": "0.0.1",
+  "description": "A modal component for react applications",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "react",
+    "modal"
+  ],
+  "author": "skellertor",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.4.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "webpack": "^4.15.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.21.0",
+    "webpack-cli": "^3.0.8"
+  }
+}
