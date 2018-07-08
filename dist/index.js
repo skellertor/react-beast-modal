@@ -182,8 +182,10 @@ var ModalProvider = exports.ModalProvider = function (_React$Component) {
   }, {
     key: "toggleBeastModal",
     value: function toggleBeastModal(_ref2) {
-      var modalContent = _ref2.modalContent,
-          isVisible = _ref2.isVisible;
+      var _ref2$modalContent = _ref2.modalContent,
+          modalContent = _ref2$modalContent === undefined ? null : _ref2$modalContent,
+          _ref2$isVisible = _ref2.isVisible,
+          isVisible = _ref2$isVisible === undefined ? false : _ref2$isVisible;
 
       this.setState({
         modalContent: modalContent,

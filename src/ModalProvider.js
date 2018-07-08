@@ -25,7 +25,7 @@ export class ModalProvider extends React.Component {
   onBackdropClick() {
     this.setState({ isVisible: false });
   }
-  toggleBeastModal({ modalContent, isVisible }) {
+  toggleBeastModal({ modalContent = null, isVisible = false }) {
     this.setState({
       modalContent,
       isVisible
