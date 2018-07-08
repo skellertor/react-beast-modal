@@ -73,5 +73,6 @@ class Home extends React.Component {
   }
 }
 
+// pass the component to the `withBeastModal` HOC
 export default withBeastModal(Home);
 ```
