@@ -142,16 +142,25 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ModalProvider = exports.ModalProvider = function (_React$Component) {
   _inherits(ModalProvider, _React$Component);
 
-  function ModalProvider() {
+  function ModalProvider(_ref) {
+    var _ref$configuration = _ref.configuration,
+        _ref$configuration$ba = _ref$configuration.backdropStyle,
+        backdropStyle = _ref$configuration$ba === undefined ? {} : _ref$configuration$ba,
+        _ref$configuration$mo = _ref$configuration.modalContainerStyle,
+        modalContainerStyle = _ref$configuration$mo === undefined ? {} : _ref$configuration$mo,
+        _ref$configuration$cl = _ref$configuration.closeOnBackdropClick,
+        closeOnBackdropClick = _ref$configuration$cl === undefined ? false : _ref$configuration$cl;
+
     _classCallCheck(this, ModalProvider);
 
     var _this = _possibleConstructorReturn(this, (ModalProvider.__proto__ || Object.getPrototypeOf(ModalProvider)).call(this));
 
     _this.state = {
       isVisible: false,
-      modalChildren: [],
-      backdropStyle: {},
-      closeOnBackdropClick: false
+      modalContent: [],
+      backdropStyle: backdropStyle,
+      modalContainerStyle: modalContainerStyle,
+      closeOnBackdropClick: closeOnBackdropClick
     };
     _this.toggleBeastModal = _this.toggleBeastModal.bind(_this);
     _this.onBackdropClick = _this.onBackdropClick.bind(_this);
@@ -172,19 +181,13 @@ var ModalProvider = exports.ModalProvider = function (_React$Component) {
     }
   }, {
     key: "toggleBeastModal",
-    value: function toggleBeastModal(_ref) {
-      var isVisible = _ref.isVisible,
-          modalChildren = _ref.modalChildren,
-          backdropStyle = _ref.backdropStyle,
-          closeOnBackdropClick = _ref.closeOnBackdropClick;
+    value: function toggleBeastModal(_ref2) {
+      var modalContent = _ref2.modalContent,
+          isVisible = _ref2.isVisible;
 
-      this.setState(function () {
-        return {
-          isVisible: isVisible,
-          modalChildren: modalChildren,
-          backdropStyle: backdropStyle,
-          closeOnBackdropClick: closeOnBackdropClick
-        };
+      this.setState({
+        modalContent: modalContent,
+        isVisible: isVisible
       });
     }
   }, {
@@ -192,7 +195,7 @@ var ModalProvider = exports.ModalProvider = function (_React$Component) {
     value: function render() {
       var _state = this.state,
           isVisible = _state.isVisible,
-          modalChildren = _state.modalChildren,
+          modalContent = _state.modalContent,
           backdropStyle = _state.backdropStyle,
           closeOnBackdropClick = _state.closeOnBackdropClick;
 
@@ -201,7 +204,7 @@ var ModalProvider = exports.ModalProvider = function (_React$Component) {
         null,
         _react2.default.createElement(_Modal2.default, {
           isVisible: isVisible,
-          modalChildren: modalChildren,
+          modalContent: modalContent,
           backdropStyle: backdropStyle,
           onBackdropClick: closeOnBackdropClick ? this.onBackdropClick : function () {}
         }),
@@ -215,6 +218,12 @@ var ModalProvider = exports.ModalProvider = function (_React$Component) {
 
 ModalProvider.childContextTypes = {
   toggleBeastModal: _propTypes2.default.func
+};
+
+ModalProvider.propTypes = {
+  backdropStyle: _propTypes2.default.object,
+  modalContainerStyle: _propTypes2.default.object,
+  closeOnBackdropClick: _propTypes2.default.bool
 };
 
 function withModal(Component) {
@@ -1079,7 +1088,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Modal = function Modal(_ref) {
   var isVisible = _ref.isVisible,
-      modalChildren = _ref.modalChildren,
+      modalContent = _ref.modalContent,
       backdropStyle = _ref.backdropStyle,
       onBackdropClick = _ref.onBackdropClick;
   return _react2.default.createElement(
@@ -1093,7 +1102,7 @@ var Modal = function Modal(_ref) {
       { className: 'beast-modal-body', onClick: function onClick(e) {
           return e.stopPropagation();
         } },
-      modalChildren
+      modalContent
     )
   );
 };
@@ -1134,7 +1143,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, ".beast-modal {\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n}\n\n.beast-modal-body {\n    height: fit-content;\n    width: fit-content;\n    background: white;\n    padding: 20px;\n    border-radius: 1px;\n    box-shadow: 1px 1px 5px 2px gray;\n}\n\n.visible {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.invisible {\n    display: none;\n}", ""]);
+exports.push([module.i, ".beast-modal {\n    position: absolute;\n    background: rgba(0,0,0,0.2);\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n}\n\n.beast-modal-body {\n    height: fit-content;\n    width: fit-content;\n    background: white;\n    padding: 20px;\n    border-radius: 1px;\n    box-shadow: 1px 1px 5px 2px gray;\n}\n\n.visible {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.invisible {\n    display: none;\n}", ""]);
 
 // exports
 

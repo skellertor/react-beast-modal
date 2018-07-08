@@ -5,13 +5,14 @@ import Modal from "./Modal";
 import "./styles.css";
 
 export class ModalProvider extends React.Component {
-  constructor() {
+  constructor({ configuration: { backdropStyle = {}, modalContainerStyle = {}, closeOnBackdropClick = false }}) {
     super();
     this.state = {
       isVisible: false,
-      modalChildren: [],
-      backdropStyle: {},
-      closeOnBackdropClick: false
+      modalContent: [],
+      backdropStyle: backdropStyle,
+      modalContainerStyle: modalContainerStyle,
+      closeOnBackdropClick: closeOnBackdropClick
     };
     this.toggleBeastModal = this.toggleBeastModal.bind(this);
     this.onBackdropClick = this.onBackdropClick.bind(this);
@@ -24,21 +25,19 @@ export class ModalProvider extends React.Component {
   onBackdropClick() {
     this.setState({ isVisible: false });
   }
-  toggleBeastModal({ isVisible, modalChildren, backdropStyle, closeOnBackdropClick }) {
-    this.setState(() => ({
-      isVisible,
-      modalChildren,
-      backdropStyle,
-      closeOnBackdropClick
-    }));
+  toggleBeastModal({ modalContent, isVisible }) {
+    this.setState({
+      modalContent,
+      isVisible
+    });
   };
   render() {
-    const { isVisible, modalChildren, backdropStyle, closeOnBackdropClick } = this.state;
+    const { isVisible, modalContent, backdropStyle, closeOnBackdropClick } = this.state;
     return (
       <div>
         <Modal
           isVisible={isVisible}
-          modalChildren={modalChildren}
+          modalContent={modalContent}
           backdropStyle={backdropStyle}
           onBackdropClick={closeOnBackdropClick ? this.onBackdropClick: () => {}}
         />
@@ -49,7 +48,13 @@ export class ModalProvider extends React.Component {
 }
 
 ModalProvider.childContextTypes = {
-  toggleBeastModal: PropTypes.func
+  toggleBeastModal: PropTypes.func,
+};
+
+ModalProvider.propTypes = {
+  backdropStyle: PropTypes.object,
+  modalContainerStyle: PropTypes.object,
+  closeOnBackdropClick: PropTypes.bool
 };
 
 export function withModal(Component) {
