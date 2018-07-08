@@ -1,3 +1,5 @@
+### React Beast Modal Usage
+
 1. In your root index.js (or whatever you call it) file
 
 ```javascript
@@ -40,7 +42,7 @@ ReactDOM.render(
 
 ```
 
-2. In any component you want to use the modal
+2. In any component you want to use the modal, import the `withBeastModal` HOC (Higher Order Component)
 
 ```javascript
 // home.js
