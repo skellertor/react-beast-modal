@@ -1,5 +1,9 @@
 {
   "name": "react-beast-modal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skellertor/react-beast-modal"
+  },
   "version": "0.0.1",
   "description": "A modal component for react applications",
   "main": "dist/index.js",
