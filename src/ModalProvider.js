@@ -5,21 +5,22 @@ import Modal from "./Modal";
 import "./styles.css";
 
 export class ModalProvider extends React.Component {
-  constructor({ configuration: { backdropStyle = {}, modalContainerStyle = {}, closeOnBackdropClick = false }}) {
+  constructor({configuration: { backdropStyle = {}, modalContainerStyle = {}, closeOnBackdropClick = false }}) {
     super();
     this.state = {
       isVisible: false,
       modalContent: [],
-      backdropStyle: backdropStyle,
-      modalContainerStyle: modalContainerStyle,
-      closeOnBackdropClick: closeOnBackdropClick
+      backdropStyle,
+      modalContainerStyle,
+      closeOnBackdropClick,
     };
     this.toggleBeastModal = this.toggleBeastModal.bind(this);
     this.onBackdropClick = this.onBackdropClick.bind(this);
   }
   getChildContext() {
     return {
-      toggleBeastModal: this.toggleBeastModal
+      toggleBeastModal: this.toggleBeastModal,
+      beastModalVisible: this.state.isVisible
     };
   }
   onBackdropClick() {
@@ -49,6 +50,7 @@ export class ModalProvider extends React.Component {
 
 ModalProvider.childContextTypes = {
   toggleBeastModal: PropTypes.func,
+  beastModalVisible: PropTypes.bool
 };
 
 ModalProvider.propTypes = {
@@ -65,7 +67,8 @@ export function withModal(Component) {
   }
 
   GetContext.contextTypes = {
-    toggleBeastModal: PropTypes.func
+    toggleBeastModal: PropTypes.func,
+    beastModalVisible: PropTypes.bool
   };
 
   return GetContext;

@@ -47,18 +47,21 @@ ReactDOM.render(
 ```javascript
 // home.js
 import React from 'react';
-// withBeastModal is a HOC that adds a function `toggleBeastModal` to the props
+/* withBeastModal is a HOC that adds a function `toggleBeastModal` 
+ * and a boolean `beastModalVisible` to the props
+ */
 import { withBeastModal } from 'react-beast-modal';
 
 import WelcomeModal from './welcomeModal';
 
 class Home extends React.Component {
   showWelcomeModal = () => {
+    const { beastModalVisible } = this.props;
     // toggleBeastModal takes an object with two props
     // isVisible (boolean): default is false
     // modalContent (react element):
     this.props.toggleBeastModal({ 
-      isVisible: true,
+      isVisible: !beastModalVisible,
       modalContent: (
         <WelcomeModal/>
       )

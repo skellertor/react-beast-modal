@@ -171,7 +171,8 @@ var ModalProvider = exports.ModalProvider = function (_React$Component) {
     key: "getChildContext",
     value: function getChildContext() {
       return {
-        toggleBeastModal: this.toggleBeastModal
+        toggleBeastModal: this.toggleBeastModal,
+        beastModalVisible: this.state.isVisible
       };
     }
   }, {
@@ -219,7 +220,8 @@ var ModalProvider = exports.ModalProvider = function (_React$Component) {
 }(_react2.default.Component);
 
 ModalProvider.childContextTypes = {
-  toggleBeastModal: _propTypes2.default.func
+  toggleBeastModal: _propTypes2.default.func,
+  beastModalVisible: _propTypes2.default.bool
 };
 
 ModalProvider.propTypes = {
@@ -249,7 +251,8 @@ function withModal(Component) {
   }(_react2.default.Component);
 
   GetContext.contextTypes = {
-    toggleBeastModal: _propTypes2.default.func
+    toggleBeastModal: _propTypes2.default.func,
+    beastModalVisible: _propTypes2.default.bool
   };
 
   return GetContext;
